@@ -1,7 +1,7 @@
 require 'sinatra'
 require_relative 'calculate.rb'
 
-enable: sessions
+enable :sessions
 
 get '/' do
 	
@@ -16,20 +16,16 @@ end
 
 post '/get_age' do
  	 session[:user_age] = params['user_age']
- 	 session[:user_name] = params['user_name']
- 	 erb:favorite_numbers, :locals => {:user_age=>session[:user_age],:user_name=>user_name}
+ 	 erb:favorite_numbers, :locals => {:user_age=>session[:user_age], :user_name=>session[:user_name]}
 end
 
 post '/get_favorites' do
- 	 user_age = params['user_age']
- 	 user_name = params['user_name']
- 	 backend_name = params[user_age]
- 	  num1 = params['num1']
- 	  num2 = params['num2']
- 	  num3 = params['num3']
- 	  sum = sum_favorite(num1,num2,num3)
- 	  result = greater_than_age(sum,user_age)
- 	 erb:results, :locals => {:user_age=>user_age,:user_name=>user_name, :result=>result,:sum=>sum }
+ 	   num1 = params['num1']
+ 	   num2 = params['num2']
+ 	   num3 = params['num3']
+ 	   session[:sum] = sum_favorite(num1,num2,num3)
+ 	   session[:result] = greater_than_age(session[:sum],session[:user_age])
+ 	 erb:results, :locals => {:user_age=>session[:user_age], :user_name=>session[:user_name], :result=>session[:result],:sum=>session[:sum]}
 #session[]
 end
 
