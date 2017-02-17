@@ -10,13 +10,14 @@ get '/' do
 end
 
 post '/get_name' do
- 	 session[:user_name] = params['user_name']
+ 	 session[:user_name] = params[:user_name]
  	 erb:age, :locals => {:user_name=>session[:user_name]}
 end
 
 post '/get_age' do
- 	 session[:user_age] = params['user_age']
- 	 erb:favorite_numbers, :locals => {:user_age=>session[:user_age], :user_name=>session[:user_name]}
+ 	 session[:user_age] = params[:user_age]
+ 	 erb:favorite_numbers, :locals => {:user_age=>session[:user_age]}
+ 	 #, :user_name=>session[:user_name]}
 end
 
 post '/get_favorites' do
