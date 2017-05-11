@@ -1,4 +1,4 @@
-# age_app
+# Age App
 
 
 This web app is one of the assignements for the TECH HIRE bootcamp. The purpose is learn how to send data between pages and work with sessions.
